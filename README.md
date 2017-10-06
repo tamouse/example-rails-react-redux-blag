@@ -1,24 +1,12 @@
-# README
+# example posts
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+- Rails 5.1 API
+- React + Redux client
 
-Things you may want to cover:
+## Setting up:
 
-* Ruby version
+Fork and clone repo:
 
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+    git clone git@github.com:YOURUSER/my-blag.git
+    cd my-blag
+    bin/setup
