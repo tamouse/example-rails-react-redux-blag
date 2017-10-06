@@ -2,16 +2,17 @@ class PostsController < ApplicationController
   before_action :find_post, only: [:show, :update, :destroy]
 
   def index
-    render json: Post.all
+    @posts = Post.all
+    render json: {posts: @posts}
   end
 
   def show
-    render json: @post
+    render json: {post: @post}
   end
 
   def create
-    if post = Post.create(create_params)
-      head :ok
+    if @post = Post.create(create_params)
+      render json: {post: @post}
     else
       render json: {errors: post.errors.full_messages}, status: :unprocessable_entity
     end
@@ -19,7 +20,7 @@ class PostsController < ApplicationController
 
   def update
     if @post.update_attributes(update_params)
-      head :ok
+      render json: {post: @post}
     else
       render json: {errors: @post.errors.full_messages}, status: :unprocessable_entity
     end

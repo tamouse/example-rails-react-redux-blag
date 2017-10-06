@@ -6,10 +6,18 @@ export const requestPosts = () => {
 }
 
 export const RECEIVE_POSTS = 'RECEIVE_POSTS'
-export const receivePosts = (json) => {
+export const receivePosts = posts => {
   return {
     type: RECEIVE_POSTS,
-    posts: json,
+    posts,
+  }
+}
+
+export const ADD_POST = 'ADD_POST'
+export const addPost = data => {
+  return {
+    type: ADD_POST,
+    data
   }
 }
 
@@ -23,6 +31,17 @@ export const loadPosts = () => {
       .catch(err => {
         console.error(err)
         throw(err)
+      })
+  }
+}
+
+export const createPost = (data) => {
+  return (dispatch) => {
+    dispatch(addPost(data))
+    return Api.createPost(data)
+      .then(post => {
+        console.log("Created: ", post)
+        dispatch(loadPosts())
       })
   }
 }
