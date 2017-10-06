@@ -1,17 +1,15 @@
 import React from 'react';
 import { createStore, applyMiddleware } from 'redux'
 import { Provider } from 'react-redux'
-import { BrowserRouter, Route } from 'react-router-dom'
+import { BrowserRouter, Route, Link } from 'react-router-dom'
 import thunk from 'redux-thunk'
-// import { createLogger } from 'redux-logger'
 import Posts from './Posts'
+import NewPost from './NewPost'
 
 import './App.css';
 
 import reducers from './rootReducer'
 import {loadPosts} from "./postActions";
-
-// let logger = createLogger()
 
 let store = createStore(
   reducers,
@@ -26,7 +24,11 @@ class App extends React.Component {
       <Provider store={store}>
         <BrowserRouter>
           <div className="App">
+            <Link className="nav-link" to="/">Home</Link>
+            <Link className="nav-link" to="/new">New Post</Link>
+
             <Route exact path="/" component={Posts}/>
+            <Route exact path="/new" component={NewPost}/>
           </div>
         </BrowserRouter>
       </Provider>
