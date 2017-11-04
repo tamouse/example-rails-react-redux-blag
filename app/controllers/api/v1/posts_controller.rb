@@ -1,8 +1,8 @@
-class PostsController < ApplicationController
+class Api::V1::PostsController < Api::V1::BaseController
   before_action :find_post, only: [:show, :update, :destroy]
 
   def index
-    @posts = Post.all
+    @posts = Post.all.order(created_at: :desc)
     render json: {posts: @posts}
   end
 

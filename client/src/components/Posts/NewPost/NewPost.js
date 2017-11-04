@@ -1,7 +1,7 @@
 import {connect} from 'react-redux'
 
 import NewPostForm from './NewPostForm'
-import {createPost} from "./postActions";
+import {createPost} from "../../../stores/postActions";
 
 const mapDispatchToProps = dispatch => {
   return {

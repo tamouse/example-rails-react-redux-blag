@@ -1,6 +1,6 @@
 import {connect} from 'react-redux'
 
-import PostsIndex from './PostsIndex'
+import PostsIndex from './List/PostsIndex'
 
 const mapStateToProps = state => {
   return {

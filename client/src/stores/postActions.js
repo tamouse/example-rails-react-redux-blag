@@ -1,4 +1,4 @@
-import Api from './Api'
+import Api from '../api/Api'
 
 export const REQUEST_POSTS = 'REQUEST_POSTS'
 export const requestPosts = () => {

@@ -1,15 +1,16 @@
 import React from 'react';
 import { createStore, applyMiddleware } from 'redux'
 import { Provider } from 'react-redux'
-import { BrowserRouter, Route, Link } from 'react-router-dom'
+import { BrowserRouter, Route, Switch } from 'react-router-dom'
 import thunk from 'redux-thunk'
-import Posts from './Posts'
-import NewPost from './NewPost'
+import Posts from '../Posts/Posts'
+import NewPost from '../Posts/NewPost/NewPost'
+import NotFound from '../NotFound'
 
 import './App.css';
 
-import reducers from './rootReducer'
-import {loadPosts} from "./postActions";
+import reducers from '../../stores/rootReducer'
+import {loadPosts} from "../../stores/postActions";
 
 let store = createStore(
   reducers,
@@ -24,11 +25,11 @@ class App extends React.Component {
       <Provider store={store}>
         <BrowserRouter>
           <div className="App">
-            <Link className="nav-link" to="/">Home</Link>
-            <Link className="nav-link" to="/new">New Post</Link>
-
-            <Route exact path="/" component={Posts}/>
-            <Route exact path="/new" component={NewPost}/>
+            <Switch>
+              <Route exact path="/" component={Posts}/>
+              <Route exact path="/new" component={NewPost}/>
+              <Route component={NotFound}/>
+            </Switch>
           </div>
         </BrowserRouter>
       </Provider>
